@@ -1,14 +1,15 @@
 from flask import Flask, send_file, request
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 from datetime import datetime
 from io import BytesIO
 import time
+import os
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return send_file("../public/index.html")
+    return send_file(os.path.join(os.path.dirname(__file__), "../public/index.html"))
 
 @app.route("/generate_gif")
 def generate_gif():
